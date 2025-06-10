@@ -9,7 +9,7 @@
   "main": "dist/index.js",
   "scripts": {
     "copy-lua": "ncp lib/lua dist/lua/",
-    "prepare": "husky install",
+    "prepare": "husky install && npm run build",
     "prebuild": "del-cli ./dist/*",
     "build": "tsc && npm run copy-lua",
     "release": "semantic-release"
