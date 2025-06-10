@@ -27,7 +27,7 @@ export class MurLockService implements OnModuleInit, OnApplicationShutdown {
 
     this.redisClient.on('error', (err) => {
       this.log('error', 'MurLock Redis Client Error', err);
-      throw new MurLockRedisException(`MurLock Redis Client Error: ${err.message}`);
+      //throw new MurLockRedisException(`MurLock Redis Client Error: ${err.message}`);
     });
 
     await this.redisClient.connect();
