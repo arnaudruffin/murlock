@@ -247,7 +247,7 @@ export class MurLockService implements OnModuleInit, OnApplicationShutdown {
 
   private registerRedisErrorHandlers() {
     this.redisClient.on('error', (err) => {
-      this.log('error', `MurLock Redis Client Error: ${err.message}`);
+      this.log('warn', `MurLock Redis Client Error: ${err.message}`);
   
       if (this.options.failFastOnRedisError) {
         this.log('error', 'MurLock Redis entering fail-fast shutdown due to Redis error.');
@@ -295,7 +295,7 @@ private async blockingLock(
         await this.sleep(this.options.wait);
       }
     } catch (error) {
-      this.log('error', `Unexpected error in blocking lock for key ${lockKey}: ${error.message}`);
+      this.log('warn', `Unexpected error in blocking lock for key ${lockKey}: ${error.message}`);
       await this.sleep(this.options.wait);
     }
   }
